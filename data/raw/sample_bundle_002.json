@@ -1,0 +1,859 @@
+{
+  "resourceType": "Bundle",
+  "id": "bundle-002",
+  "meta": {
+    "lastUpdated": "2024-01-16T08:30:00Z"
+  },
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:patient-002",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-002",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-01-16T08:30:00Z"
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "http://hospital.example.org/mrn",
+            "value": "MRN-100002"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Chen",
+            "given": ["Wei", "Lin"]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-234-5678",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "wei.chen@email.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-11-08",
+        "address": [
+          {
+            "use": "home",
+            "line": ["892 Maple Street", "Apt 4B"],
+            "city": "Chicago",
+            "state": "IL",
+            "postalCode": "60601",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "W",
+              "display": "Widowed"
+            }
+          ]
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "zh",
+                  "display": "Chinese"
+                }
+              ]
+            },
+            "preferred": true
+          },
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US",
+                  "display": "English (United States)"
+                }
+              ]
+            },
+            "preferred": false
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:encounter-002-001",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "encounter-002-001",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-01-16T08:30:00Z"
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185349003",
+                "display": "Encounter for check up"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/patient-002",
+          "display": "Wei Lin Chen"
+        },
+        "period": {
+          "start": "2023-02-08T10:00:00Z",
+          "end": "2023-02-08T11:15:00Z"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "84114007",
+                "display": "Heart failure"
+              }
+            ]
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/org-chicago-general",
+          "display": "Chicago General Hospital"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:encounter-002-002",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "encounter-002-002",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-01-16T08:30:00Z"
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "32485007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/patient-002",
+          "display": "Wei Lin Chen"
+        },
+        "period": {
+          "start": "2023-05-14T16:00:00Z",
+          "end": "2023-05-19T10:30:00Z"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "84114007",
+                "display": "Heart failure"
+              }
+            ]
+          }
+        ],
+        "hospitalization": {
+          "admitSource": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/admit-source",
+                "code": "emd",
+                "display": "From accident/emergency department"
+              }
+            ]
+          },
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:encounter-002-003",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "encounter-002-003",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-01-16T08:30:00Z"
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "EMER",
+          "display": "emergency"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "50849002",
+                "display": "Emergency room admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/patient-002",
+          "display": "Wei Lin Chen"
+        },
+        "period": {
+          "start": "2023-09-22T03:45:00Z",
+          "end": "2023-09-22T09:00:00Z"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "230690007",
+                "display": "Acute decompensated heart failure"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-002-001",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-002-001",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "I50.9",
+              "display": "Heart failure, unspecified"
+            }
+          ],
+          "text": "Congestive Heart Failure"
+        },
+        "subject": {
+          "reference": "Patient/patient-002"
+        },
+        "onsetDateTime": "2020-03-15",
+        "recordedDate": "2020-03-20"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-002-002",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-002-002",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "I48.91",
+              "display": "Unspecified atrial fibrillation"
+            }
+          ],
+          "text": "Atrial Fibrillation"
+        },
+        "subject": {
+          "reference": "Patient/patient-002"
+        },
+        "onsetDateTime": "2021-07-10",
+        "recordedDate": "2021-07-10"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-002-003",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-002-003",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "N18.3",
+              "display": "Chronic kidney disease, stage 3"
+            }
+          ],
+          "text": "Chronic Kidney Disease Stage 3"
+        },
+        "subject": {
+          "reference": "Patient/patient-002"
+        },
+        "onsetDateTime": "2022-01-05",
+        "recordedDate": "2022-01-05"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-002-004",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-002-004",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "I10",
+              "display": "Essential (primary) hypertension"
+            }
+          ],
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "Patient/patient-002"
+        },
+        "onsetDateTime": "2016-08-22",
+        "recordedDate": "2016-08-22"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-002-005",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-002-005",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "J18.9",
+              "display": "Pneumonia, unspecified organism"
+            }
+          ],
+          "text": "Pneumonia"
+        },
+        "subject": {
+          "reference": "Patient/patient-002"
+        },
+        "onsetDateTime": "2023-05-14",
+        "abatementDateTime": "2023-05-28",
+        "recordedDate": "2023-05-14"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-002-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-002-001",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ],
+          "text": "Systolic Blood Pressure"
+        },
+        "subject": {"reference": "Patient/patient-002"},
+        "encounter": {"reference": "Encounter/encounter-002-001"},
+        "effectiveDateTime": "2023-02-08T10:15:00Z",
+        "valueQuantity": {
+          "value": 162,
+          "unit": "mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-002-002",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-002-002",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ],
+          "text": "Diastolic Blood Pressure"
+        },
+        "subject": {"reference": "Patient/patient-002"},
+        "encounter": {"reference": "Encounter/encounter-002-001"},
+        "effectiveDateTime": "2023-02-08T10:15:00Z",
+        "valueQuantity": {
+          "value": 98,
+          "unit": "mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-002-003",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-002-003",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "33914-3",
+              "display": "Glomerular filtration rate/1.73 sq M.predicted"
+            }
+          ],
+          "text": "eGFR"
+        },
+        "subject": {"reference": "Patient/patient-002"},
+        "effectiveDateTime": "2023-02-08T10:30:00Z",
+        "valueQuantity": {
+          "value": 44,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-002-004",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-002-004",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Cholesterol [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Total Cholesterol"
+        },
+        "subject": {"reference": "Patient/patient-002"},
+        "effectiveDateTime": "2023-02-08T10:30:00Z",
+        "valueQuantity": {
+          "value": 198,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-002-005",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-002-005",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ],
+          "text": "Body Weight"
+        },
+        "subject": {"reference": "Patient/patient-002"},
+        "effectiveDateTime": "2023-05-14T16:30:00Z",
+        "valueQuantity": {
+          "value": 68.5,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-002-006",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-002-006",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6299-2",
+              "display": "Urea nitrogen [Mass/volume] in Blood"
+            }
+          ],
+          "text": "BUN"
+        },
+        "subject": {"reference": "Patient/patient-002"},
+        "encounter": {"reference": "Encounter/encounter-002-002"},
+        "effectiveDateTime": "2023-05-15T07:00:00Z",
+        "valueQuantity": {
+          "value": 38,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-002-007",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-002-007",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart Rate"
+        },
+        "subject": {"reference": "Patient/patient-002"},
+        "encounter": {"reference": "Encounter/encounter-002-003"},
+        "effectiveDateTime": "2023-09-22T03:55:00Z",
+        "valueQuantity": {
+          "value": 118,
+          "unit": "beats/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-002-008",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-002-008",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Pulse Oximetry"
+        },
+        "subject": {"reference": "Patient/patient-002"},
+        "encounter": {"reference": "Encounter/encounter-002-003"},
+        "effectiveDateTime": "2023-09-22T03:55:00Z",
+        "valueQuantity": {
+          "value": 91,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:claim-002-001",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "claim-002-001",
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "professional",
+              "display": "Professional"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {"reference": "Patient/patient-002"},
+        "billablePeriod": {
+          "start": "2023-02-08",
+          "end": "2023-02-08"
+        },
+        "created": "2023-02-09",
+        "provider": {"reference": "Organization/org-chicago-general"},
+        "priority": {"coding": [{"code": "normal"}]},
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "coverage": {"reference": "Coverage/coverage-002"}
+          }
+        ],
+        "item": [
+          {
+            "sequence": 1,
+            "productOrService": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "99214",
+                  "display": "Office or other outpatient visit, established patient, moderate-high complexity"
+                }
+              ]
+            },
+            "unitPrice": {"value": 245.00, "currency": "USD"},
+            "net": {"value": 245.00, "currency": "USD"}
+          }
+        ],
+        "total": {"value": 245.00, "currency": "USD"}
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:claim-002-002",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "claim-002-002",
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "institutional",
+              "display": "Institutional"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {"reference": "Patient/patient-002"},
+        "billablePeriod": {
+          "start": "2023-05-14",
+          "end": "2023-05-19"
+        },
+        "created": "2023-05-22",
+        "provider": {"reference": "Organization/org-chicago-general"},
+        "priority": {"coding": [{"code": "normal"}]},
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "coverage": {"reference": "Coverage/coverage-002"}
+          }
+        ],
+        "item": [
+          {
+            "sequence": 1,
+            "productOrService": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "99232",
+                  "display": "Subsequent hospital inpatient care, per day, moderate complexity"
+                }
+              ]
+            },
+            "unitPrice": {"value": 6800.00, "currency": "USD"},
+            "net": {"value": 6800.00, "currency": "USD"}
+          }
+        ],
+        "total": {"value": 6800.00, "currency": "USD"}
+      }
+    }
+  ]
+}

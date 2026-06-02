@@ -1,0 +1,276 @@
+{
+  "version": "R4",
+  "description": "Simplified FHIR R4 resource schemas for pipeline validation",
+  "resources": {
+    "Patient": {
+      "required": ["resourceType", "id"],
+      "recommended": ["name", "birthDate", "gender"],
+      "properties": {
+        "resourceType": {"type": "string", "const": "Patient"},
+        "id": {"type": "string", "minLength": 1},
+        "meta": {
+          "type": "object",
+          "properties": {
+            "versionId": {"type": "string"},
+            "lastUpdated": {"type": "string", "format": "date-time"}
+          }
+        },
+        "identifier": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "use": {"type": "string", "enum": ["usual", "official", "temp", "secondary", "old"]},
+              "system": {"type": "string"},
+              "value": {"type": "string"}
+            }
+          }
+        },
+        "active": {"type": "boolean"},
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "use": {"type": "string"},
+              "family": {"type": "string"},
+              "given": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "telecom": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "system": {"type": "string", "enum": ["phone", "fax", "email", "pager", "url", "sms", "other"]},
+              "value": {"type": "string"},
+              "use": {"type": "string", "enum": ["home", "work", "temp", "old", "mobile"]}
+            }
+          }
+        },
+        "gender": {"type": "string", "enum": ["male", "female", "other", "unknown"]},
+        "birthDate": {"type": "string", "format": "date"},
+        "address": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "use": {"type": "string"},
+              "line": {"type": "array", "items": {"type": "string"}},
+              "city": {"type": "string"},
+              "state": {"type": "string"},
+              "postalCode": {"type": "string"},
+              "country": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "Encounter": {
+      "required": ["resourceType", "id", "status", "subject"],
+      "recommended": ["class", "type", "period"],
+      "properties": {
+        "resourceType": {"type": "string", "const": "Encounter"},
+        "id": {"type": "string", "minLength": 1},
+        "status": {
+          "type": "string",
+          "enum": ["planned", "arrived", "triaged", "in-progress", "onleave", "finished", "cancelled", "entered-in-error", "unknown"]
+        },
+        "class": {
+          "type": "object",
+          "properties": {
+            "system": {"type": "string"},
+            "code": {"type": "string"},
+            "display": {"type": "string"}
+          }
+        },
+        "type": {"type": "array"},
+        "subject": {
+          "type": "object",
+          "required": ["reference"],
+          "properties": {
+            "reference": {"type": "string", "pattern": "^Patient/"},
+            "display": {"type": "string"}
+          }
+        },
+        "period": {
+          "type": "object",
+          "properties": {
+            "start": {"type": "string"},
+            "end": {"type": "string"}
+          }
+        }
+      }
+    },
+    "Condition": {
+      "required": ["resourceType", "id", "subject"],
+      "recommended": ["clinicalStatus", "code", "onsetDateTime"],
+      "properties": {
+        "resourceType": {"type": "string", "const": "Condition"},
+        "id": {"type": "string", "minLength": 1},
+        "clinicalStatus": {
+          "type": "object",
+          "properties": {
+            "coding": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "system": {"type": "string"},
+                  "code": {
+                    "type": "string",
+                    "enum": ["active", "recurrence", "relapse", "inactive", "remission", "resolved"]
+                  },
+                  "display": {"type": "string"}
+                }
+              }
+            }
+          }
+        },
+        "verificationStatus": {
+          "type": "object"
+        },
+        "code": {
+          "type": "object",
+          "properties": {
+            "coding": {"type": "array"},
+            "text": {"type": "string"}
+          }
+        },
+        "subject": {
+          "type": "object",
+          "required": ["reference"],
+          "properties": {
+            "reference": {"type": "string", "pattern": "^Patient/"}
+          }
+        },
+        "onsetDateTime": {"type": "string"},
+        "abatementDateTime": {"type": "string"},
+        "recordedDate": {"type": "string"}
+      }
+    },
+    "Observation": {
+      "required": ["resourceType", "id", "status", "subject"],
+      "recommended": ["code", "effectiveDateTime", "valueQuantity"],
+      "properties": {
+        "resourceType": {"type": "string", "const": "Observation"},
+        "id": {"type": "string", "minLength": 1},
+        "status": {
+          "type": "string",
+          "enum": ["registered", "preliminary", "final", "amended", "corrected", "cancelled", "entered-in-error", "unknown"]
+        },
+        "category": {"type": "array"},
+        "code": {
+          "type": "object",
+          "properties": {
+            "coding": {"type": "array"},
+            "text": {"type": "string"}
+          }
+        },
+        "subject": {
+          "type": "object",
+          "required": ["reference"],
+          "properties": {
+            "reference": {"type": "string", "pattern": "^Patient/"}
+          }
+        },
+        "encounter": {
+          "type": "object",
+          "properties": {
+            "reference": {"type": "string", "pattern": "^Encounter/"}
+          }
+        },
+        "effectiveDateTime": {"type": "string"},
+        "valueQuantity": {
+          "type": "object",
+          "properties": {
+            "value": {"type": "number"},
+            "unit": {"type": "string"},
+            "system": {"type": "string"},
+            "code": {"type": "string"}
+          }
+        }
+      }
+    },
+    "Claim": {
+      "required": ["resourceType", "id", "status", "patient"],
+      "recommended": ["type", "use", "billablePeriod", "total"],
+      "properties": {
+        "resourceType": {"type": "string", "const": "Claim"},
+        "id": {"type": "string", "minLength": 1},
+        "status": {
+          "type": "string",
+          "enum": ["active", "cancelled", "draft", "entered-in-error"]
+        },
+        "type": {
+          "type": "object",
+          "properties": {
+            "coding": {"type": "array"}
+          }
+        },
+        "use": {
+          "type": "string",
+          "enum": ["claim", "preauthorization", "predetermination"]
+        },
+        "patient": {
+          "type": "object",
+          "required": ["reference"],
+          "properties": {
+            "reference": {"type": "string", "pattern": "^Patient/"}
+          }
+        },
+        "billablePeriod": {
+          "type": "object",
+          "properties": {
+            "start": {"type": "string"},
+            "end": {"type": "string"}
+          }
+        },
+        "created": {"type": "string"},
+        "total": {
+          "type": "object",
+          "properties": {
+            "value": {"type": "number", "minimum": 0},
+            "currency": {"type": "string"}
+          }
+        }
+      }
+    }
+  },
+  "valid_clinical_status_codes": ["active", "recurrence", "relapse", "inactive", "remission", "resolved"],
+  "valid_encounter_status_codes": ["planned", "arrived", "triaged", "in-progress", "onleave", "finished", "cancelled", "entered-in-error", "unknown"],
+  "valid_observation_status_codes": ["registered", "preliminary", "final", "amended", "corrected", "cancelled", "entered-in-error", "unknown"],
+  "valid_encounter_classes": ["AMB", "EMER", "IMP", "ACUTE", "NONAC", "OBSENC", "PRENC", "SS", "VR"],
+  "valid_genders": ["male", "female", "other", "unknown"],
+  "common_loinc_codes": {
+    "8480-6": "Systolic blood pressure",
+    "8462-4": "Diastolic blood pressure",
+    "39156-5": "Body mass index",
+    "4548-4": "Hemoglobin A1c",
+    "2093-3": "Total Cholesterol",
+    "33914-3": "eGFR",
+    "8867-4": "Heart rate",
+    "59408-5": "Oxygen saturation",
+    "29463-7": "Body Weight",
+    "6299-2": "BUN",
+    "1751-7": "Albumin",
+    "14937-7": "ESR",
+    "11572-5": "Rheumatoid factor",
+    "2823-3": "Potassium",
+    "8310-5": "Body temperature"
+  },
+  "common_icd10_codes": {
+    "E11.9": "Type 2 diabetes mellitus without complications",
+    "I10": "Essential hypertension",
+    "E78.5": "Hyperlipidemia unspecified",
+    "I50.9": "Heart failure unspecified",
+    "I48.91": "Unspecified atrial fibrillation",
+    "N18.3": "Chronic kidney disease stage 3",
+    "M06.9": "Rheumatoid arthritis unspecified",
+    "M81.0": "Age-related osteoporosis",
+    "F32.1": "Major depressive disorder moderate",
+    "K21.0": "GERD with esophagitis",
+    "I69.30": "Sequelae of cerebral infarction"
+  }
+}
