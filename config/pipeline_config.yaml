@@ -1,0 +1,83 @@
+pipeline:
+  name: fhir-patient-pipeline
+  version: "0.1.0"
+  run_mode: full  # full | incremental
+
+paths:
+  raw_data_dir: data/raw
+  landing_zone: data/landing
+  bronze_zone: data/bronze
+  silver_zone: data/silver
+  gold_zone: data/gold
+  warehouse_db: data/warehouse/fhir_warehouse.duckdb
+  watermark_file: data/watermarks.json
+  pipeline_log_dir: data/logs
+
+ingestion:
+  supported_resource_types:
+    - Patient
+    - Encounter
+    - Condition
+    - Observation
+    - Claim
+  bundle_entry_limit: 10000
+  file_pattern: "*.json"
+
+validation:
+  strict_mode: false
+  severity_threshold: ERROR  # Only fail pipeline on ERROR (not WARNING/INFO)
+  min_quality_score: 70  # Reject batches below this score
+  required_fields:
+    Patient:
+      - id
+      - resourceType
+    Encounter:
+      - id
+      - resourceType
+      - status
+      - subject
+    Condition:
+      - id
+      - resourceType
+      - subject
+    Observation:
+      - id
+      - resourceType
+      - status
+      - subject
+    Claim:
+      - id
+      - resourceType
+      - status
+      - patient
+
+transformation:
+  bronze:
+    dedup_fields:
+      Patient: [id]
+      Encounter: [id]
+      Condition: [id]
+      Observation: [id]
+      Claim: [id]
+    partition_by: ingestion_date
+  silver:
+    date_format: "%Y-%m-%d"
+    null_string_replacement: ""
+  gold:
+    chronic_condition_lookback_days: 365
+    financial_rounding_scale: 2
+
+warehouse:
+  duckdb:
+    memory_limit: "2GB"
+    threads: 4
+    enable_progress_bar: false
+
+retry:
+  max_attempts: 3
+  backoff_base_seconds: 2
+  backoff_multiplier: 2
+
+logging:
+  level: INFO
+  format: "%(asctime)s | %(name)s | %(levelname)s | %(message)s"

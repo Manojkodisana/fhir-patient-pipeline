@@ -1,0 +1,949 @@
+{
+  "resourceType": "Bundle",
+  "id": "bundle-001",
+  "meta": {
+    "lastUpdated": "2024-01-15T10:00:00Z"
+  },
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:patient-001",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-001",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-01-15T10:00:00Z"
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "http://hospital.example.org/mrn",
+            "value": "MRN-100001"
+          },
+          {
+            "use": "secondary",
+            "system": "http://hl7.org/fhir/sid/us-ssn",
+            "value": "555-12-3456"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Martinez",
+            "given": ["Carlos", "Eduardo"]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-867-5309",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "carlos.martinez@email.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1978-04-22",
+        "address": [
+          {
+            "use": "home",
+            "line": ["1423 Elmwood Drive"],
+            "city": "Springfield",
+            "state": "IL",
+            "postalCode": "62701",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "Married"
+            }
+          ]
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US",
+                  "display": "English (United States)"
+                }
+              ]
+            },
+            "preferred": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:encounter-001-001",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "encounter-001-001",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-01-15T10:00:00Z"
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185349003",
+                "display": "Encounter for check up"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/patient-001",
+          "display": "Carlos Eduardo Martinez"
+        },
+        "period": {
+          "start": "2023-03-10T09:00:00Z",
+          "end": "2023-03-10T10:30:00Z"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "73211009",
+                "display": "Diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/org-springfield-medical",
+          "display": "Springfield Medical Center"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:encounter-001-002",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "encounter-001-002",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-01-15T10:00:00Z"
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "32485007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/patient-001",
+          "display": "Carlos Eduardo Martinez"
+        },
+        "period": {
+          "start": "2023-07-18T14:00:00Z",
+          "end": "2023-07-22T11:00:00Z"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Diabetes mellitus type 2"
+              }
+            ]
+          }
+        ],
+        "hospitalization": {
+          "admitSource": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/admit-source",
+                "code": "emd",
+                "display": "From accident/emergency department"
+              }
+            ]
+          },
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:encounter-001-003",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "encounter-001-003",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-01-15T10:00:00Z"
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "EMER",
+          "display": "emergency"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "50849002",
+                "display": "Emergency room admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/patient-001",
+          "display": "Carlos Eduardo Martinez"
+        },
+        "period": {
+          "start": "2023-11-05T02:15:00Z",
+          "end": "2023-11-05T08:45:00Z"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "230690007",
+                "display": "Cerebrovascular accident"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-001-001",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-001-001",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-01-15T10:00:00Z"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "E11.9",
+              "display": "Type 2 diabetes mellitus without complications"
+            }
+          ],
+          "text": "Type 2 Diabetes Mellitus"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "onsetDateTime": "2015-06-01",
+        "recordedDate": "2015-06-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-001-002",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-001-002",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "I10",
+              "display": "Essential (primary) hypertension"
+            }
+          ],
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "onsetDateTime": "2018-02-14",
+        "recordedDate": "2018-02-14"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-001-003",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-001-003",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "E78.5",
+              "display": "Hyperlipidemia, unspecified"
+            }
+          ],
+          "text": "Hyperlipidemia"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "onsetDateTime": "2019-09-03",
+        "recordedDate": "2019-09-03"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-001-004",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-001-004",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "J06.9",
+              "display": "Acute upper respiratory infection, unspecified"
+            }
+          ],
+          "text": "Upper Respiratory Infection"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "onsetDateTime": "2023-01-12",
+        "abatementDateTime": "2023-01-26",
+        "recordedDate": "2023-01-12"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-001-005",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-001-005",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "I69.30",
+              "display": "Unspecified sequelae of cerebral infarction"
+            }
+          ],
+          "text": "Sequelae of cerebrovascular accident"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "onsetDateTime": "2023-11-05",
+        "recordedDate": "2023-11-06"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-001-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-001-001",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ],
+          "text": "Systolic Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "encounter": {
+          "reference": "Encounter/encounter-001-001"
+        },
+        "effectiveDateTime": "2023-03-10T09:15:00Z",
+        "valueQuantity": {
+          "value": 148,
+          "unit": "mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-001-002",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-001-002",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ],
+          "text": "Diastolic Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "encounter": {
+          "reference": "Encounter/encounter-001-001"
+        },
+        "effectiveDateTime": "2023-03-10T09:15:00Z",
+        "valueQuantity": {
+          "value": 92,
+          "unit": "mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-001-003",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-001-003",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "BMI"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "effectiveDateTime": "2023-03-10T09:20:00Z",
+        "valueQuantity": {
+          "value": 31.4,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-001-004",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-001-004",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ],
+          "text": "HbA1c"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "encounter": {
+          "reference": "Encounter/encounter-001-001"
+        },
+        "effectiveDateTime": "2023-03-10T09:30:00Z",
+        "valueQuantity": {
+          "value": 8.2,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 5.7,
+              "unit": "%"
+            },
+            "text": "Normal: < 5.7%"
+          }
+        ],
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-001-005",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-001-005",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Cholesterol [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Total Cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "effectiveDateTime": "2023-03-10T09:30:00Z",
+        "valueQuantity": {
+          "value": 224,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-001-006",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-001-006",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "33914-3",
+              "display": "Glomerular filtration rate/1.73 sq M.predicted"
+            }
+          ],
+          "text": "eGFR"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "effectiveDateTime": "2023-07-18T15:00:00Z",
+        "valueQuantity": {
+          "value": 62,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-001-007",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-001-007",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart Rate"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "encounter": {
+          "reference": "Encounter/encounter-001-003"
+        },
+        "effectiveDateTime": "2023-11-05T02:30:00Z",
+        "valueQuantity": {
+          "value": 102,
+          "unit": "beats/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-001-008",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-001-008",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Pulse Oximetry"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "encounter": {
+          "reference": "Encounter/encounter-001-003"
+        },
+        "effectiveDateTime": "2023-11-05T02:30:00Z",
+        "valueQuantity": {
+          "value": 96,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:claim-001-001",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "claim-001-001",
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "professional",
+              "display": "Professional"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {
+          "reference": "Patient/patient-001"
+        },
+        "billablePeriod": {
+          "start": "2023-03-10",
+          "end": "2023-03-10"
+        },
+        "created": "2023-03-11",
+        "provider": {
+          "reference": "Organization/org-springfield-medical"
+        },
+        "priority": {
+          "coding": [
+            {
+              "code": "normal"
+            }
+          ]
+        },
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "coverage": {
+              "reference": "Coverage/coverage-001"
+            }
+          }
+        ],
+        "item": [
+          {
+            "sequence": 1,
+            "productOrService": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "99213",
+                  "display": "Office or other outpatient visit, established patient, low-moderate complexity"
+                }
+              ]
+            },
+            "unitPrice": {
+              "value": 185.00,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 185.00,
+              "currency": "USD"
+            }
+          }
+        ],
+        "total": {
+          "value": 185.00,
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:claim-001-002",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "claim-001-002",
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "institutional",
+              "display": "Institutional"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {
+          "reference": "Patient/patient-001"
+        },
+        "billablePeriod": {
+          "start": "2023-07-18",
+          "end": "2023-07-22"
+        },
+        "created": "2023-07-25",
+        "provider": {
+          "reference": "Organization/org-springfield-medical"
+        },
+        "priority": {
+          "coding": [
+            {
+              "code": "normal"
+            }
+          ]
+        },
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "coverage": {
+              "reference": "Coverage/coverage-001"
+            }
+          }
+        ],
+        "item": [
+          {
+            "sequence": 1,
+            "productOrService": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "99221",
+                  "display": "Hospital inpatient admission, initial care, low complexity"
+                }
+              ]
+            },
+            "unitPrice": {
+              "value": 4250.00,
+              "currency": "USD"
+            },
+            "net": {
+              "value": 4250.00,
+              "currency": "USD"
+            }
+          }
+        ],
+        "total": {
+          "value": 4250.00,
+          "currency": "USD"
+        }
+      }
+    }
+  ]
+}
